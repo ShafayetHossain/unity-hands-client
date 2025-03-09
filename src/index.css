@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@plugin "daisyui";
+
+.input[type="date"],[type="time"] {
+    color-scheme: white;
+}
