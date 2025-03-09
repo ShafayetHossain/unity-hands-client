@@ -5,7 +5,6 @@ import ParticipantsEventCard from "../ParticipantsEventCard/ParticipantsEventCar
 const ParticipantsEvent = () => {
   const participantsEvent = useLoaderData();
   const [participants, setParticipants] = useState(participantsEvent);
-  console.log(participants);
 
   return (
     <div>
