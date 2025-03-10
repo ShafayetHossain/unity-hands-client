@@ -5,12 +5,11 @@ import { Navigate, useLocation } from "react-router-dom";
 
 const PrivateRoute = ({ children }) => {
     const location = useLocation();
-  const { userAcount, loading, setLoading } = useContext(ContextProvider);
+  const { userAcount, loading } = useContext(ContextProvider);
   if (loading) {
     return <Loading></Loading>;
   }
   if (userAcount) {
-    setLoading(false);
     return children;
   } else {
     return <Navigate state={location.pathname} to={"/sign-in"}></Navigate>;

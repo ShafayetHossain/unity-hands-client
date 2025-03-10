@@ -108,7 +108,7 @@ const Login = () => {
                   </button>
                   <Link
                     to={"/sign-up"}
-                    state={location?.state? location.state : "/"}
+                    state={location?.state}
                     className="link link-hover hover:text-orange-500"
                   >
                     Don't have accout click here.!
