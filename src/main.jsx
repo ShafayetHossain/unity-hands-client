@@ -14,10 +14,12 @@ import MyEvents from "./components/MyEvents/MyEvents.jsx";
 import UpdateMyEvent from "./components/UpdateMyEvent/UpdateMyEvent.jsx";
 import ParticipantsEvent from "./components/ParticipantsEvent/ParticipantsEvent.jsx";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute.jsx";
+import ErrorPage from "./components/ErrorPage/ErrorPage.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout></Layout>,
+    errorElement : <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
