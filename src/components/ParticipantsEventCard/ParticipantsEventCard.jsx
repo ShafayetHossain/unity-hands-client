@@ -52,6 +52,7 @@ Best Regards,
       if (result.isConfirmed) {
         fetch(`https://unity-hand-server.vercel.app/participant/${id}`, {
           method: "DELETE",
+          credentials: "include",
         })
           .then((res) => res.json())
           .then((result) => {

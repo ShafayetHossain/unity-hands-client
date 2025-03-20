@@ -33,6 +33,7 @@ const PostEvent = () => {
 
     fetch(`https://unity-hand-server.vercel.app/events`, {
       method: "POST",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },

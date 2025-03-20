@@ -1,17 +1,18 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ContextProvider } from "../../Provider/Provider";
 import MyEventCard from "../MyEventCard/MyEventCard";
+import axios from "axios";
 
 const MyEvents = () => {
   const [myEvents, setMyEvents] = useState([]);
   const { userAcount } = useContext(ContextProvider);
 
   useEffect(() => {
-    fetch(`https://unity-hand-server.vercel.app/events?user=${userAcount?.email}`)
-      .then((res) => res.json())
-      .then((result) => {
-        setMyEvents(result);
-      });
+    axios
+      .get(`https://unity-hand-server.vercel.app/events?user=${userAcount?.email}`, {
+        withCredentials: true, // ✅ Ensures cookies are sent with the request
+      })
+      .then((res) => setMyEvents(res?.data));
   }, [userAcount]);
 
   const handleSearch = (event) => {
@@ -29,7 +30,7 @@ const MyEvents = () => {
   return (
     <div>
       <h1 className="text-3xl font-semibold text-center py-4 divider">
-        My Events Feature
+        My Events Feature:- {myEvents?.length}
       </h1>
 
       <div className="flex justify-center items-center">

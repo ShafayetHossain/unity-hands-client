@@ -8,7 +8,9 @@ const AppliedEvents = () => {
 
   useEffect(() => {
     if (userAcount) {
-      fetch(`https://unity-hand-server.vercel.app/application?user=${userAcount?.email}`)
+      fetch(`https://unity-hand-server.vercel.app/application?user=${userAcount?.email}`,{
+        credentials: "include",
+      })
         .then((res) => res.json())
         .then((result) => {
           setApplication(result);
@@ -18,7 +20,7 @@ const AppliedEvents = () => {
 
   return (
     <div>
-      <h1 className="text-center text-3xl py-3">Your Applied Events</h1>
+      <h1 className="text-center text-3xl py-3">Your Applied Events-{application?.length}</h1>
       <div className="w-11/12 mx-auto rounded-box border border-base-content/5 bg-base-100 overflow-auto">
         <table className="table">
           <thead>

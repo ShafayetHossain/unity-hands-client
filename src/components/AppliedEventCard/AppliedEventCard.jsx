@@ -7,17 +7,7 @@ const AppliedEventCard = ({
   application,
   setApplication,
 }) => {
-  // const {
-  //   _id,
-  //   title,
-  //   description,
-  //   date,
-  //   time,
-  //   location,
-  //   category,
-  //   hr_name,
-  //   hr_email,
-  // } = event
+
 
   const handleRemoveEvent = (id) => {
     Swal.fire({
@@ -32,6 +22,7 @@ const AppliedEventCard = ({
       if (result.isConfirmed) {
         fetch(`https://unity-hand-server.vercel.app/application/${id}`, {
           method: "DELETE",
+          credentials: "include",
         })
           .then((res) => res.json())
           .then((result) => {

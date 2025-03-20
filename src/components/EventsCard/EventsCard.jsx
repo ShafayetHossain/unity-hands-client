@@ -32,6 +32,7 @@ const EventsCard = ({ event }) => {
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include",
         body: JSON.stringify(applicationData),
       })
         .then((res) => {

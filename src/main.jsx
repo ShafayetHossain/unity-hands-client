@@ -19,11 +19,14 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout></Layout>,
-    errorElement : <ErrorPage></ErrorPage>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
-        loader: () => fetch("https://unity-hand-server.vercel.app/events"),
+        loader: () =>
+          fetch("https://unity-hand-server.vercel.app/events", {
+            credentials: "include", // ✅ Ensures cookies (like JWT) are sent with the request
+          }),
         element: <Home></Home>,
       },
       {
@@ -69,7 +72,9 @@ const router = createBrowserRouter([
       {
         path: "/update-event/:id",
         loader: ({ params }) =>
-          fetch(`https://unity-hand-server.vercel.app/events/${params.id}`),
+          fetch(`https://unity-hand-server.vercel.app/events/${params.id}`,{
+            credentials: "include",
+          }),
         element: (
           <PrivateRoute>
             <UpdateMyEvent></UpdateMyEvent>
@@ -79,7 +84,9 @@ const router = createBrowserRouter([
       {
         path: "/participants-event/:id",
         loader: ({ params }) =>
-          fetch(`https://unity-hand-server.vercel.app/application/${params.id}`),
+          fetch(`https://unity-hand-server.vercel.app/application/${params.id}`,{
+            credentials: "include",
+          }),
         element: (
           <PrivateRoute>
             <ParticipantsEvent></ParticipantsEvent>
@@ -97,4 +104,3 @@ createRoot(document.getElementById("root")).render(
     </Provider>
   </StrictMode>
 );
-

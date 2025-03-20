@@ -3,6 +3,7 @@ import lottielogin from "../../assets/lottiefiles/login.json";
 import Lottie from "lottie-react";
 import { Form, Link, useLocation, useNavigate } from "react-router-dom";
 import { ContextProvider } from "../../Provider/Provider";
+import axios from "axios";
 
 const Login = () => {
   const {
@@ -25,6 +26,10 @@ const Login = () => {
 
     signInUser(email, password)
       .then(() => {
+        axios
+          .post("https://unity-hand-server.vercel.app/jwt", { email })
+          .then((res) => console.log(res));
+
         notifySuccess("Sign-in successfully");
         navigate(location?.state ? location.state : "/");
         form.reset();
@@ -36,7 +41,16 @@ const Login = () => {
 
   const handleSocialSingin = () => {
     signWithGoogle()
-      .then(() => {
+      .then((res) => {
+        const email = res?.user?.email;
+        axios
+          .post(
+            "https://unity-hand-server.vercel.app/jwt",
+            { email },
+            { withCredentials: true }
+          )
+          .then((res) => res?.data);
+
         notifySuccess("Sign-in successfully");
         navigate(location?.state ? location.state : "/");
       })
@@ -50,7 +64,7 @@ const Login = () => {
 
     if (email) {
       resetPassword(email)
-      .then(() => {
+        .then(() => {
           notifySuccess("A mail sent to your email");
         })
         .catch((error) => {
@@ -100,7 +114,7 @@ const Login = () => {
                 />
                 <div className="flex justify-between items-center">
                   <button
-                  type="button"
+                    type="button"
                     onClick={handleResetPassword}
                     className="link link-hover hover:text-red-500"
                   >

@@ -23,6 +23,7 @@ const MyEventCard = ({ event, myEvents, setMyEvents }) => {
         if (result.isConfirmed) {
           fetch(`https://unity-hand-server.vercel.app/events/${id}`, {
             method: "DELETE",
+            credentials: "include",
           })
             .then((res) => res.json())
             .then((result) => {

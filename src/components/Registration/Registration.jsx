@@ -3,14 +3,10 @@ import lottieregistration from "../../assets/lottiefiles/registration.json";
 import Lottie from "lottie-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ContextProvider } from "../../Provider/Provider";
+import axios from "axios";
 const Registration = () => {
-  const {
-    setLoading,
-    createUser,
-    updateUser,
-    notifySuccess,
-    notifyError,
-  } = useContext(ContextProvider);
+  const { setLoading, createUser, updateUser, notifySuccess, notifyError } =
+    useContext(ContextProvider);
   const navigate = useNavigate();
   const location = useLocation();
   const nameRegex = /^.{1,40}$/; // Name must be between 1 and 40 characters
@@ -42,30 +38,21 @@ const Registration = () => {
       );
       return 0;
     } else {
-      // createUser(email, password)
-      //   .then(() => {
-      //     updateUser(name, photoUrl)
-      //       .then(() => {
-      //         notifySuccess("User Create successfully");
-      //         form.reset();
-      //       })
-      //       .catch((error) => {
-      //         notifyError(error.message);
-      //         return 0;
-      //       });
-      //   })
-      //   .catch((error) => {
-      //     notifyError(error.message);
-      //     return 0;
-      //   });
       createUser(email, password)
-        .then(() => updateUser(name, photoUrl)) 
+        .then(() => updateUser(name, photoUrl))
         .then(() => {
+          axios
+            .post(
+              "https://unity-hand-server.vercel.app/jwt",
+              { email },
+              { withCredentials: true }
+            )
+            .then(() => res?.data);
           notifySuccess("User Created Successfully");
           setLoading(true);
           setTimeout(() => {
-            setLoading(false); 
-            navigate(location?.state? location.state : "/"); 
+            setLoading(false);
+            navigate(location?.state ? location.state : "/");
           }, 1500);
         })
         .catch((error) => {
