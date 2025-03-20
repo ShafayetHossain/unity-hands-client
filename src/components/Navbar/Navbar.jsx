@@ -64,10 +64,10 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">
+        <Link to={"/"} className="btn btn-ghost text-xl">
           <img src="/logo1.png" alt="" />
           UnityHands
-        </a>
+        </Link>
         <h2>{userAcount?.displayName || ""}</h2>
       </div>
       <div className="navbar-center hidden lg:flex">
