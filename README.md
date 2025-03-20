@@ -7,7 +7,8 @@ Unity Hand is a social volunteering web application designed to connect users wi
 - **Frontend:** React.js, Tailwind CSS, DaisyUI
 - **Backend:** Node.js, Express.js, MongoDB
 - **Authentication:** Firebase
-- **Deployment:**
+- **Security:** JSON Web Token (JWT) for authentication
+- **Deployment:** 
   - Client-side: [Netlify](https://unity-hands.netlify.app/)
   - Server-side: [Vercel](https://vercel.com/)
 - **Source Code:**
@@ -62,6 +63,11 @@ Unity Hand is a social volunteering web application designed to connect users wi
 ### Applied Events Section
 - Displays events the user has joined.
 - Includes a **Remove Event** button to unregister from an event.
+
+## Security & Authentication
+- **Firebase Authentication** is used for user login and registration.
+- **JSON Web Token (JWT)** is implemented for secure user authentication and protected routes.
+- Users can only access or modify their own events and applications.
 
 ## Live Website
 [Unity Hand Live](https://unity-hands.netlify.app/)
