@@ -11,6 +11,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { toast, ToastContainer } from "react-toastify";
+import axios from "axios";
 
 export const ContextProvider = createContext();
 
@@ -57,7 +58,7 @@ const Provider = ({ children }) => {
       setUserAcount(currentUser);
 
       if (currentUser?.email) {
-        user = { email: currentUser.email };
+        const user = { email: currentUser.email };
         axios
           .post(
             "https://unity-hand-server.vercel.app/jwt",

@@ -21,7 +21,7 @@ const Banner = () => {
                 delay: 1,
                 ease: easeInOut,
               }}
-              className="text-5xl font-bold"
+              className="text-2xl lg:text-5xl font-bold"
             >
               Hands For The People!{" "}
             </motion.h1>

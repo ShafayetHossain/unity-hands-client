@@ -58,11 +58,11 @@ const Registration = () => {
     <div>
       <div className="hero bg-base-200 min-h-screen">
         <div className="hero-content flex-col lg:flex-row-reverse w-11/12 mx-auto">
-          <div className="text-center lg:text-left w-1/2 ">
+          <div className="text-center lg:text-left lg:w-1/2 ">
             <Lottie animationData={lottieregistration} loop={true} />
           </div>
 
-          <div className="card bg-base-100 max-w-sm shrink-0 shadow-2xl w-1/2">
+          <div className="card bg-base-100 max-w-sm shrink-0 shadow-2xl lg:w-1/2">
             <div className="card-body">
               <h1 className="text-5xl font-bold text-center pb-2">
                 Registration now!

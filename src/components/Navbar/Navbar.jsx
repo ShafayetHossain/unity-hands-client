@@ -62,13 +62,21 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             {links}
+            <div className={userAcount? "hidden" : ""}>
+              <li>
+                <NavLink to={"/sign-in"}>Sign-in</NavLink>
+              </li>
+              <li>
+                <NavLink to={"/sign-up"}>Sign-Up</NavLink>
+              </li>
+            </div>
           </ul>
         </div>
         <Link to={"/"} className="btn btn-ghost text-xl">
           <img src="/logo1.png" alt="" />
           UnityHands
         </Link>
-        <h2>{userAcount?.displayName || ""}</h2>
+        <h2 className="hidden lg:block">{userAcount?.displayName || ""}</h2>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
@@ -79,7 +87,7 @@ const Navbar = () => {
             Sign-Out
           </button>
         ) : (
-          <div>
+          <div className="hidden lg:flex">
             <Link to={"/sign-in"} className="btn btn-success mr-2">
               Sign-in
             </Link>

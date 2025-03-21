@@ -56,7 +56,7 @@ const PostEvent = () => {
 
   return (
     <div className="bg-[#F4F3F0]">
-      <div className="p-5 w-10/12 mx-auto">
+      <div className="p-5 lg:w-10/12 mx-auto">
         <form onSubmit={handleEventData} action="" method="post" className="">
           <div className="flex justify-center items-center py-4 gap-x-3">
             <div className="w-full flex flex-col justify-center items-center space-y-5">
