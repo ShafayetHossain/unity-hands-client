@@ -41,13 +41,6 @@ const Registration = () => {
       createUser(email, password)
         .then(() => updateUser(name, photoUrl))
         .then(() => {
-          axios
-            .post(
-              "https://unity-hand-server.vercel.app/jwt",
-              { email },
-              { withCredentials: true }
-            )
-            .then(() => res?.data);
           notifySuccess("User Created Successfully");
           setLoading(true);
           setTimeout(() => {

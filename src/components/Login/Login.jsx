@@ -26,10 +26,6 @@ const Login = () => {
 
     signInUser(email, password)
       .then(() => {
-        axios
-          .post("https://unity-hand-server.vercel.app/jwt", { email })
-          .then((res) => console.log(res));
-
         notifySuccess("Sign-in successfully");
         navigate(location?.state ? location.state : "/");
         form.reset();
@@ -43,14 +39,7 @@ const Login = () => {
     signWithGoogle()
       .then((res) => {
         const email = res?.user?.email;
-        axios
-          .post(
-            "https://unity-hand-server.vercel.app/jwt",
-            { email },
-            { withCredentials: true }
-          )
-          .then((res) => res?.data);
-
+       
         notifySuccess("Sign-in successfully");
         navigate(location?.state ? location.state : "/");
       })

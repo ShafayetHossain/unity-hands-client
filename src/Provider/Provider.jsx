@@ -55,7 +55,30 @@ const Provider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUserAcount(currentUser);
-      setLoading(false);
+
+      if (currentUser?.email) {
+        user = { email: currentUser.email };
+        axios
+          .post(
+            "https://unity-hand-server.vercel.app/jwt",
+            user,
+            { withCredentials: true }
+          )
+          .then((res) => res?.data);
+          setLoading(false);
+      }
+
+      else{
+        axios
+        .post(
+          "https://unity-hand-server.vercel.app/logout",
+          {},
+          { withCredentials: true }
+        )
+        .then((res) => res?.data);
+        setLoading(false);
+      }
+
     });
     return () => unsubscribe();
   }, []);
